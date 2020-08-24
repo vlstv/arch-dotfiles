@@ -101,5 +101,5 @@ alias vim="/usr/bin/nvim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Import colorscheme from 'wal'
 # cat /home/vlstv/.cache/wal/sequences
-git init --bare $HOME/.dotfiles
+# git init --bare $HOME/.dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
