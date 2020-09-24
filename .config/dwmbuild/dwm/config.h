@@ -111,7 +111,7 @@ static Key keys[] = {
 	{ 0,XF86XK_MonBrightnessDown,   spawn,          SHCMD("light -U 10") },
 	{ 0,XK_Print,                   spawn,          SHCMD("scrot 'screenshot_%Y%m%d_%H%M%S.png'") },
 	{ ShiftMask,XK_Print,           spawn,          SHCMD("scrot -s 'screenshot_%Y%m%d_%H%M%S.png'") },
-	{ MODKEY|ShiftMask,XK_d,        spawn,          SHCMD("echo -e 'HDMI-1\neDP-1\nHDMI-1+eDP-1' | /home/vlstv/s/dmenu.sh | /home/vlstv/s/tooglemonitors.sh")},
+	{ MODKEY|ShiftMask,XK_d,        spawn,          SHCMD("echo -e 'HDMI-1\neDP-1\nHDMI-1+eDP-1' | dmenu | /home/vlstv/s/tooglemonitors.sh")},
 	{ MODKEY,XK_p,                  spawn,          SHCMD("kitty -e ranger")},
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
