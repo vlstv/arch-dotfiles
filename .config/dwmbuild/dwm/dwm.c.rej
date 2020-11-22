@@ -1,0 +1,19 @@
+--- dwm.c
++++ dwm.c
+@@ -92,6 +92,7 @@ struct Client {
+ 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
+ 	int bw, oldbw;
+ 	unsigned int tags;
++	unsigned int switchtag;
+ 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+ 	Client *next;
+ 	Client *snext;
+@@ -1807,6 +1833,8 @@ unmanage(Client *c, int destroyed)
+ 	focus(NULL);
+ 	updateclientlist();
+ 	arrange(m);
++	if (switchtag)
++		view(&((Arg) { .ui = switchtag }));
+ }
+ 
+ void
