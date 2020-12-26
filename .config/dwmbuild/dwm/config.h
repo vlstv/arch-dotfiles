@@ -17,12 +17,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=9", "TerminessTTF Nerd Font:size=12:antialias=true:autohint=true" };
 static const char dmenufont[]       = "monospace:size=9";
-static const char col_gray1[]       = "#202745";
-static const char col_gray2[]       = "#202745";
-static const char col_gray3[]       = "#969cb3";
-static const char col_gray4[]       = "#202745";
-static const char col_back1[]       = "#638cc4"; /*"#9c6279" dust rose*/
-static const char col_cyan[]        = "#638cc4"; /*"#638cc4 "; old from i3 conf: #76C8D9*/
+static const char col_gray1[]       = "#2e3440";
+static const char col_gray2[]       = "#2e3440";
+static const char col_gray3[]       = "#d8dee9";
+static const char col_gray4[]       = "#2e3440";
+static const char col_back1[]       = "#81a1c1"; /*"#9c6279" dust rose*/
+static const char col_cyan[]        = "#81a1c1"; /*"#638cc4 "; old from i3 conf: #76C8D9*/
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -52,6 +52,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 #include "layouts.c"
 #include "gaplessgrid.c"
+#include "movestack.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -85,8 +86,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Up,     setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_Down,   setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_Up,     setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_Down,   setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_Right,  movestack,      {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_Left,   movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_s,      incrgaps,       {.i = +5 } },
 	{ MODKEY,                       XK_w,      togglegaps,     {0} },
 	{ MODKEY|ShiftMask,             XK_w,      defaultgaps,    {0} },
