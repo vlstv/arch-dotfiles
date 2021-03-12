@@ -15,8 +15,8 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=9", "TerminessTTF Nerd Font:size=12:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=9";
+static const char *fonts[]          = { "Hack Nerd Font:size=9.5" };
+static const char dmenufont[]       = "Hack Nerd Font:size=9.5";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#2e3440";
 static const char col_gray3[]       = "#d8dee9";
@@ -39,7 +39,7 @@ static const Rule rules[] = {
 	*/
 	/* class      instance    title       tags mask    switchtag   isfloating   isterminal   noswallow   monitor */
 	{ "Steam",     NULL,       NULL,       1 << 5,      0,          0,           0,           0,          -1 },
-    { "firefox",   NULL,       NULL,       1 << 1,      1,          0,           0,           0,          -1 },
+    { "firefox",   NULL,       NULL,       1 << 1,      1,          0,           0,           1,          -1 },
 	{ "Telegram",  NULL,       NULL,       1 << 2,      1,          0,           0,           0,          -1 },
 	{ "kitty",     NULL,       NULL,       0,           0,          0,           1,           0,          -1 },
 	{ "ranger",    NULL,       "ranger",   0,           0,          0,           1,           0,          -1 },
@@ -97,6 +97,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
