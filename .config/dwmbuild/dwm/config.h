@@ -17,20 +17,20 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack Nerd Font:size=9.5" };
 static const char dmenufont[]       = "Hack Nerd Font:size=9.5";
-static const char col_gray1[]       = "#2e3440";
-static const char col_gray2[]       = "#2e3440";
-static const char col_gray3[]       = "#d8dee9";
-static const char col_gray4[]       = "#2e3440";
-static const char col_back1[]       = "#81a1c1"; /*"#9c6279" dust rose*/
-static const char col_cyan[]        = "#81a1c1"; /*"#638cc4 "; old from i3 conf: #76C8D9*/
+static const char bg_main[]         = "#2e3440";
+static const char border_main[]     = "#2e3440";
+static const char fg_main[]         = "#d8dee9";
+static const char fg_sec[]          = "#2e3440";
+static const char bg_sec[]          = "#81a1c1";
+static const char border_active[]   = "#81a1c1";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_back1, col_cyan  },
+	/*               fg         bg         border     */
+	[SchemeNorm] = { fg_main, bg_main, border_main    },
+	[SchemeSel]  = { fg_sec,  bg_sec,  border_active  },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -56,10 +56,10 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[T]",      tile },    /* first entry is default */
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ ":::",      gaplessgrid },
+	{ "[G]",      gaplessgrid },
 };
 
 /* key definitions */
@@ -75,7 +75,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_back1, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 
 #include <X11/XF86keysym.h>
@@ -89,6 +89,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_j,      setmfact,       {.f = +0.025} },
 	{ MODKEY|ShiftMask,             XK_k,      setmfact,       {.f = -0.025} },
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
+	{ MODKEY|ShiftMask,             XK_i,      resetlayout,    {0} },
 	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
 	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_Right,  movestack,      {.i = +1 } },
@@ -127,9 +128,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0
 } },
 };
