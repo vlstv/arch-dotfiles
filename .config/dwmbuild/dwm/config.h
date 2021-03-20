@@ -22,7 +22,7 @@ static const char border_main[]     = "#2e3440";
 static const char fg_main[]         = "#d8dee9";
 static const char fg_sec[]          = "#2e3440";
 static const char bg_sec[]          = "#81a1c1";
-static const char border_active[]   = "#81a1c1";
+static const char border_active[]   = "#81a1cB";
 static const char *colors[][3]      = {
 	/*               fg         bg         border     */
 	[SchemeNorm] = { fg_main, bg_main, border_main    },
