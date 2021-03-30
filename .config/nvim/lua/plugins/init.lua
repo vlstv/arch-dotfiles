@@ -1,3 +1,7 @@
+require 'plugins.dashboard'
+require 'plugins.packer'
 require 'plugins.galaxy'
+require 'plugins.nerdtree'
+-- require 'plugins.telescope'
 require 'plugins.lsp'
-require 'plugins.startify'
+require 'plugins.vim-rooter'

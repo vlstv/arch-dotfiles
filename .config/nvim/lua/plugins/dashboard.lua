@@ -1,6 +1,5 @@
-vim.g.startify_disable_at_vimenter = 0
-vim.g.ascii = { 
-
+vim.g.dashboard_custom_header = { 
+          "",
           "=================     ===============     ===============   ========  ========",
           "\\\\ . . . . . . .\\\\   //. . . . . . .\\\\   //. . . . . . .\\\\  \\\\. . .\\\\// . . //",
           "||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\\/ . . .||",
@@ -19,24 +18,17 @@ vim.g.ascii = {
           "||.=='    _-'                                                     `' |  /==.||",
           "=='    _-'                          N V I M                           \\/   `==",
           "\\   _-'                                                                `-_   /",
-          " `''                                                                      ``'"
+          " `''                                                                      ``'",
+          ""
  }
-vim.g.footer = {
-                "",
-                "",
-                "",
-                ""}
 
-vim.g.startify_custom_header = 'startify#center(g:ascii)'
-vim.g.startify_custom_footer = 'startify#center(g:footer)'
+vim.g.dashboard_default_executive = 'telescope'
 
-vim.cmd([[
-function! StartifyEntryFormat()
-        return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-endfunction
-]])
+vim.g.dashboard_custom_section = {
+    a = {description = {' Find File               SPC f f'}, command = 'Files'},
+    b = {description = {' Recently Used Files     SPC f o'}, command = 'History'},
+    c = {description = {' Load Last Session       SPC s l'}, command = 'SessionLoad'},
+    e = {description = {' Bookmarks               SPC f p'}, command = 'Bookmarks'}
+}
 
-vim.g.webdevicons_enable_startify = 1
-vim.api.nvim_exec("let g:startify_bookmarks = systemlist(\"cut -sd' ' -f 2- ~/.NERDTreeBookmarks\")", true)
-
-vim.api.nvim_exec("let startify_lists = [{ 'type': 'bookmarks', 'header': ['   Bookmarks']      },{ 'type': 'files',     'header': ['   Files']          },{ 'type': 'sessions',  'header': ['   Sessions']       }]", true)
+vim.g.dashboard_custom_footer = {"","",""," ","","","",""}
