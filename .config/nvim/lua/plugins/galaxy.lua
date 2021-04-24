@@ -1,10 +1,9 @@
 -- Galaxyline
 --
 local gl = require('galaxyline')
-
 local gls = gl.section
-gl.short_line_list = {'NvimTree', 'vista', 'dbui'}
 
+gl.short_line_list = {'NvimTree', 'amfora', 'zsh'}
 
 local colors = {
     bg = '#3B4252',
@@ -19,49 +18,6 @@ local colors = {
     blue = '#88C0D0',
     red = '#BF616A'
 }
-
-local function lsp_status(status)
-    shorter_stat = ''
-   for match in string.gmatch(status, "[^%s]+") do
-        err_warn = string.find(match, "^[WE]%d+", 0)
-        if not err_warn then shorter_stat = shorter_stat .. ' ' .. match end
-    end
-    return shorter_stat
-end
-
-local function get_coc_lsp()
-    local status = vim.fn['coc#status']()
-    if not status or status == '' then return '' end
-    return lsp_status(status)
-end
-
-function get_diagnostic_info()
-    if vim.fn.exists('*coc#rpc#start_server') == 1 then return get_coc_lsp() end
-    return ''
-end
-
-local function get_current_func()
-    local has_func, func_name = pcall(vim.fn.nvim_buf_get_var, 0,
-                                      'coc_current_function')
-    if not has_func then return end
-    return func_name
-end
-
-function get_function_info()
-    if vim.fn.exists('*coc#rpc#start_server') == 1 then
-        return get_current_func()
-    end
-    return ''
-end
-
-local function trailing_whitespace()
-    local trail = vim.fn.search("\\s$", "nw")
-    if trail ~= 0 then
-        return ' '
-    else
-        return nil
-    end
-end
 
 TrailingWhiteSpace = trailing_whitespace
 
@@ -218,7 +174,9 @@ gls.right[5] = {
         provider = 'DiffAdd',
         condition = checkwidth,
         icon = '  ',
-        highlight = {colors.green, colors.bg}
+        highlight = {colors.green, colors.bg},
+        separator = ' ',
+        separator_highlight = {'NONE', colors.bg}
     }
 }
 gls.right[6] = {
@@ -244,32 +202,3 @@ gls.right[8] = {
         highlight = {colors.blue, colors.bg}
     }
 }
-
-gls.short_line_left[1] = {
-    BufferType = {
-        provider = 'FileTypeName',
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.blue, colors.bg, 'bold'}
-    }
-}
-
-gls.short_line_left[2] = {
-    SFileName = {
-        provider = function()
-            local fileinfo = require('galaxyline.provider_fileinfo')
-            local fname = fileinfo.get_current_file_name()
-            for _, v in ipairs(gl.short_line_list) do
-                if v == vim.bo.filetype then return '' end
-            end
-            return fname
-        end,
-        condition = buffer_not_empty,
-        highlight = {colors.white, colors.bg, 'bold'}
-    }
-}
-
-gls.short_line_right[1] = {
-    BufferIcon = {provider = 'BufferIcon', highlight = {colors.fg, colors.bg}}
-}
-

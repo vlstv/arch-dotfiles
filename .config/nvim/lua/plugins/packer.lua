@@ -11,9 +11,8 @@ vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when th
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+  use 'joshdick/onedark.vim'
   use 'jiangmiao/auto-pairs'
-  use 'preservim/nerdtree'
-  use 'Xuyuanp/nerdtree-git-plugin'
   use 'ryanoasis/vim-devicons'
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
@@ -22,19 +21,22 @@ return require('packer').startup(function()
   use 'junegunn/fzf'
   use 'yangmillstheory/vim-snipe'
   use 'vimwiki/vimwiki'
-  -- use 'mhinz/vim-startify'
   use 'tpope/vim-commentary'
   use 'glepnir/galaxyline.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
+  use 'glepnir/lspsaga.nvim'
+  -- use 'nvim-lua/completion-nvim'
+  use 'hrsh7th/nvim-compe'
   use 'romgrk/doom-one.vim'
-  use 'ChristianChiarulli/dashboard-nvim'
-  use 'airblade/vim-rooter'
+  -- use 'airblade/vim-rooter'
   use 'liuchengxu/vim-which-key'
-  -- use {
-  --   'nvim-telescope/telescope.nvim',
-  --   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  -- }
-  -- use 'nvim-telescope/telescope-project.nvim'
+  use 'iandwelker/rose-pine-vim'
+  use 'morhetz/gruvbox'
+  use 'kyazdani42/nvim-tree.lua'
+  use 'kyazdani42/nvim-web-devicons'
+  -- use 'romgrk/barbar.nvim'
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'stsewd/fzf-checkout.vim'
+  use 'ChristianChiarulli/dashboard-nvim'
 end)
 
