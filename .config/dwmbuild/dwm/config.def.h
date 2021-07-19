@@ -20,9 +20,9 @@ static const char dmenufont[]       = "Hack Nerd Font:size=9.5";
 static const char bg_main[]         = "#2e3440";
 static const char border_main[]     = "#2e3440";
 static const char fg_main[]         = "#d8dee9";
-static const char fg_sec[]          = "#2e3440";
-static const char bg_sec[]          = "#81a1c1";
-static const char border_active[]   = "#81a1c1";
+static const char fg_sec[]          = "#d8dee9";
+static const char bg_sec[]          = "#3B4252";
+static const char border_active[]   = "#81a1cB";
 static const char *colors[][3]      = {
 	/*               fg         bg         border     */
 	[SchemeNorm] = { fg_main, bg_main, border_main    },
@@ -121,7 +121,8 @@ static Key keys[] = {
 	{ 0,XK_Print,                   spawn,          SHCMD("scrot 'screenshot_%Y%m%d_%H%M%S.png'") },
 	{ ShiftMask,XK_Print,           spawn,          SHCMD("scrot -s 'screenshot_%Y%m%d_%H%M%S.png'") },
 	{ MODKEY|ShiftMask,XK_d,        spawn,          SHCMD("echo -e 'HDMI-1\neDP-1\nHDMI-1+eDP-1' | dmenu | /home/vlstv/s/tooglemonitors.sh")},
-	{ MODKEY,XK_p,                  spawn,          SHCMD("kitty -e ranger")},
+	{ MODKEY,XK_r,                  spawn,          SHCMD("kitty -e ranger")},
+	{ MODKEY,XK_p,                  spawn,          SHCMD("passmenu")},
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

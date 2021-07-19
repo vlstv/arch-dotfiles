@@ -31,4 +31,4 @@ vim.g.dashboard_custom_section = {
     e = {description = {' Bookmarks               SPC f p'}, command = 'Bookmarks'}
 }
 
-vim.g.dashboard_custom_footer = {"","",""," ","","","",""}
+vim.g.dashboard_custom_footer = {"","",""," ",""}
